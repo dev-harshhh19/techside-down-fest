@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import NeonButton from '../NeonButton';
+import Countdown from '../Countdown';
 
 const HeroSection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -59,7 +60,7 @@ const HeroSection = () => {
           className="mb-6"
         >
           <span className="inline-block px-4 py-2 text-sm font-stranger tracking-widest text-primary border border-primary/30 rounded-full neon-border">
-            <span className="upside-down-float">2025</span> • THE PORTAL OPENS
+            <span className="upside-down-float">2026</span> • THE PORTAL OPENS
           </span>
         </motion.div>
 
@@ -105,11 +106,24 @@ const HeroSection = () => {
           Join us for a journey through code, creativity, and the extraordinary.
         </motion.p>
 
+        {/* Countdown Timer */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2 }}
+          className="mb-10"
+        >
+          <p className="text-sm font-stranger tracking-[0.3em] text-muted-foreground mb-4">
+            THE PORTAL OPENS IN
+          </p>
+          <Countdown />
+        </motion.div>
+
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3 }}
+          transition={{ delay: 1.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <NeonButton variant="primary" size="lg">
@@ -124,22 +138,22 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
+          transition={{ delay: 1.6 }}
           className="mt-12 flex items-center justify-center gap-8 text-muted-foreground"
         >
           <div className="text-center">
-            <div className="text-3xl font-display text-primary neon-text-subtle">15-17</div>
-            <div className="text-sm font-stranger tracking-wider">MARCH</div>
+            <div className="text-3xl font-display text-primary neon-text-subtle">30-31</div>
+            <div className="text-sm font-stranger tracking-wider">JANUARY</div>
           </div>
           <div className="w-px h-12 bg-primary/30" />
           <div className="text-center">
-            <div className="text-3xl font-display text-primary neon-text-subtle">2025</div>
+            <div className="text-3xl font-display text-primary neon-text-subtle">2026</div>
             <div className="text-sm font-stranger tracking-wider">THE YEAR</div>
           </div>
           <div className="w-px h-12 bg-primary/30" />
           <div className="text-center">
-            <div className="text-3xl font-display text-primary neon-text-subtle">∞</div>
-            <div className="text-sm font-stranger tracking-wider">POSSIBILITIES</div>
+            <div className="text-3xl font-display text-primary neon-text-subtle">2</div>
+            <div className="text-sm font-stranger tracking-wider">DAYS</div>
           </div>
         </motion.div>
       </motion.div>
