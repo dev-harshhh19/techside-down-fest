@@ -3,9 +3,8 @@ import { useRef, useState } from 'react';
 import { Clock, MapPin } from 'lucide-react';
 
 const days = [
-  { id: 'day1', label: 'Day 1', date: 'March 15' },
-  { id: 'day2', label: 'Day 2', date: 'March 16' },
-  { id: 'day3', label: 'Day 3', date: 'March 17' },
+  { id: 'day1', label: 'Day 1', date: 'Jan 30' },
+  { id: 'day2', label: 'Day 2', date: 'Jan 31' },
 ];
 
 const schedule: Record<string, Array<{
@@ -19,24 +18,18 @@ const schedule: Record<string, Array<{
     { time: "10:30", title: "Code Demogorgon Kickoff", venue: "Hacker Den", type: "Hackathon" },
     { time: "12:00", title: "Keynote: The Upside Down of AI", venue: "Main Arena", type: "Talk" },
     { time: "14:00", title: "Workshop: React Portals", venue: "Lab 1", type: "Workshop" },
-    { time: "16:00", title: "Arcade Abyss Qualifiers", venue: "Gaming Zone", type: "Gaming" },
-    { time: "19:00", title: "Networking: The Void Mixer", venue: "Lounge", type: "Social" },
+    { time: "16:00", title: "Mind Flayer Quiz Round 1", venue: "Quiz Hall", type: "Quiz" },
+    { time: "18:00", title: "Arcade Abyss Qualifiers", venue: "Gaming Zone", type: "Gaming" },
+    { time: "20:00", title: "Networking: The Void Mixer", venue: "Lounge", type: "Social" },
   ],
   day2: [
-    { time: "09:00", title: "Mind Flayer Quiz Round 1", venue: "Quiz Hall", type: "Quiz" },
-    { time: "11:00", title: "Portal Design Challenge", venue: "Design Lab", type: "Design" },
+    { time: "09:00", title: "Portal Design Challenge", venue: "Design Lab", type: "Design" },
+    { time: "11:00", title: "Hackathon Final Stretch", venue: "Hacker Den", type: "Hackathon" },
     { time: "13:00", title: "Panel: Future of Web3", venue: "Main Arena", type: "Talk" },
-    { time: "15:00", title: "Echo Chamber Preliminaries", venue: "Auditorium", type: "Speaking" },
-    { time: "17:00", title: "Arcade Abyss Semi-Finals", venue: "Gaming Zone", type: "Gaming" },
-    { time: "20:00", title: "Night Coding: Hawkins Mode", venue: "Hacker Den", type: "Hackathon" },
-  ],
-  day3: [
-    { time: "09:00", title: "Hackathon Final Stretch", venue: "Hacker Den", type: "Hackathon" },
-    { time: "12:00", title: "Project Presentations", venue: "Main Arena", type: "Demo" },
-    { time: "14:00", title: "Final Boss Championships", venue: "Main Arena", type: "Championship" },
-    { time: "16:00", title: "Echo Chamber Finals", venue: "Auditorium", type: "Speaking" },
-    { time: "18:00", title: "Award Ceremony", venue: "Main Arena", type: "Ceremony" },
-    { time: "20:00", title: "Portal Closing Party", venue: "All Venues", type: "Social" },
+    { time: "15:00", title: "Final Boss Championships", venue: "Main Arena", type: "Championship" },
+    { time: "17:00", title: "Echo Chamber Finals", venue: "Auditorium", type: "Speaking" },
+    { time: "19:00", title: "Award Ceremony", venue: "Main Arena", type: "Ceremony" },
+    { time: "21:00", title: "Portal Closing Party", venue: "All Venues", type: "Social" },
   ],
 };
 
