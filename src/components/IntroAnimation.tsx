@@ -1,9 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface IntroAnimationProps {
   onComplete: () => void;
 }
+
+// Generate a vein path
+const generateVeinPath = (startX: number, startY: number, length: number, direction: number) => {
+  let path = `M ${startX} ${startY}`;
+  let x = startX;
+  let y = startY;
+  
+  for (let i = 0; i < length; i++) {
+    const dx = Math.cos(direction) * (15 + Math.random() * 10);
+    const dy = Math.sin(direction) * (15 + Math.random() * 10);
+    direction += (Math.random() - 0.5) * 0.5;
+    x += dx;
+    y += dy;
+    path += ` Q ${x - dx/2 + (Math.random() - 0.5) * 8} ${y - dy/2 + (Math.random() - 0.5) * 8} ${x} ${y}`;
+  }
+  
+  return path;
+};
 
 const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
   const [phase, setPhase] = useState<'zoom' | 'reveal' | 'subtitle' | 'fadeout'>('zoom');
@@ -11,7 +29,6 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
   const subtitle = "THE TECHSIDE DOWN";
 
   useEffect(() => {
-    // Phase timing like Netflix intro
     const timers = [
       setTimeout(() => setPhase('reveal'), 500),
       setTimeout(() => setPhase('subtitle'), 4500),
@@ -31,6 +48,18 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
     duration: Math.random() * 10 + 10,
     delay: Math.random() * 5,
   }));
+
+  // Generate Vecna veins
+  const veins = useMemo(() => [
+    { path: generateVeinPath(0, 200, 12, 0.3), delay: 0 },
+    { path: generateVeinPath(0, 400, 15, 0.1), delay: 0.3 },
+    { path: generateVeinPath(0, 600, 10, -0.2), delay: 0.6 },
+    { path: generateVeinPath(window.innerWidth, 150, 14, Math.PI - 0.2), delay: 0.2 },
+    { path: generateVeinPath(window.innerWidth, 350, 12, Math.PI + 0.1), delay: 0.5 },
+    { path: generateVeinPath(window.innerWidth, 550, 11, Math.PI - 0.1), delay: 0.8 },
+    { path: generateVeinPath(200, 0, 10, Math.PI / 2 + 0.2), delay: 0.4 },
+    { path: generateVeinPath(window.innerWidth - 200, 0, 10, Math.PI / 2 - 0.2), delay: 0.7 },
+  ], []);
 
   return (
     <AnimatePresence>
@@ -80,6 +109,41 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
               />
             ))}
           </div>
+
+          {/* Vecna Veins */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none z-[5]">
+            <defs>
+              <filter id="intro-vein-glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            {veins.map((vein, i) => (
+              <motion.path
+                key={i}
+                d={vein.path}
+                fill="none"
+                stroke="rgba(220, 38, 38, 0.7)"
+                strokeWidth="2"
+                filter="url(#intro-vein-glow)"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={phase !== 'zoom' ? { 
+                  pathLength: 1, 
+                  opacity: [0, 0.8, 0.6, 0.8, 0.6],
+                } : { pathLength: 0, opacity: 0 }}
+                transition={{
+                  pathLength: { duration: 3, delay: vein.delay, ease: "easeOut" },
+                  opacity: { duration: 2, delay: vein.delay, repeat: Infinity, repeatType: "reverse" },
+                }}
+                style={{
+                  filter: 'drop-shadow(0 0 8px rgba(220, 38, 38, 0.8))',
+                }}
+              />
+            ))}
+          </svg>
 
           {/* Main Title Container - Netflix-style zoom */}
           <motion.div
