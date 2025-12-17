@@ -41,7 +41,7 @@ const Navbar = () => {
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
             <span className="text-2xl font-stranger tracking-wider text-primary neon-text-subtle">
@@ -51,6 +51,16 @@ const Navbar = () => {
               TECHXPRESSION
             </span>
           </a>
+
+          {/* Center Badge */}
+          <div className="hidden md:flex flex-col items-center absolute left-1/2 -translate-x-1/2">
+            <div className="px-6 py-2 border-2 border-primary/50 rounded-full">
+              <span className="text-sm font-stranger tracking-[0.2em] text-muted-foreground">
+                2026 • THE PORTAL OPENS
+              </span>
+            </div>
+            <div className="w-20 h-0.5 bg-primary mt-3" />
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -65,6 +75,7 @@ const Navbar = () => {
               </button>
             ))}
           </div>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
