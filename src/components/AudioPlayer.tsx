@@ -60,17 +60,17 @@ const AudioPlayer = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 }}
-      className="fixed top-4 right-6 z-50 flex items-center gap-4 bg-card/90 backdrop-blur-sm px-5 py-3 rounded-full border border-border/50"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.3 }}
+      className="fixed top-3 right-4 z-50 flex items-center gap-4 bg-background/80 backdrop-blur-md px-4 py-2.5 rounded-full border border-border/30"
     >
       <audio ref={audioRef} src={audioSrc} loop />
       
-      {/* Play/Pause Button - Circular outline style */}
+      {/* Play/Pause Button */}
       <button
         onClick={togglePlay}
-        className="w-10 h-10 rounded-full border-2 border-primary/70 flex items-center justify-center hover:border-primary transition-colors"
+        className="w-9 h-9 rounded-full border-2 border-primary/60 flex items-center justify-center hover:border-primary transition-colors"
         aria-label={isPlaying ? 'Pause' : 'Play'}
       >
         {isPlaying ? (

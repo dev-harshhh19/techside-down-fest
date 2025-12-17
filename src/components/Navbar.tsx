@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import NeonButton from './NeonButton';
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -66,12 +65,6 @@ const Navbar = () => {
               </button>
             ))}
           </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <NeonButton size="sm">Register</NeonButton>
-          </div>
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -101,7 +94,6 @@ const Navbar = () => {
                   {item.label}
                 </button>
               ))}
-              <NeonButton className="mt-4">Register</NeonButton>
             </div>
           </motion.div>
         )}
