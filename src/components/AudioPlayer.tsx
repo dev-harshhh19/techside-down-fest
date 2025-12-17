@@ -63,59 +63,57 @@ const AudioPlayer = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 }}
-      className="fixed top-4 right-6 z-50 flex items-center gap-3 bg-card/95 backdrop-blur-sm px-4 py-3 rounded-lg border border-primary/40 shadow-lg shadow-primary/20"
+      className="fixed top-4 right-6 z-50 flex items-center gap-4 bg-card/90 backdrop-blur-sm px-5 py-3 rounded-full border border-border/50"
     >
       <audio ref={audioRef} src={audioSrc} loop />
       
-      {/* Play/Pause Button - Circular */}
+      {/* Play/Pause Button - Circular outline style */}
       <button
         onClick={togglePlay}
-        className="w-12 h-12 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center hover:bg-primary/30 transition-colors shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
+        className="w-10 h-10 rounded-full border-2 border-primary/70 flex items-center justify-center hover:border-primary transition-colors"
         aria-label={isPlaying ? 'Pause' : 'Play'}
       >
         {isPlaying ? (
-          <Pause className="w-5 h-5 text-primary" />
+          <Pause className="w-4 h-4 text-primary" />
         ) : (
-          <Play className="w-5 h-5 text-primary ml-0.5" />
+          <Play className="w-4 h-4 text-primary ml-0.5" />
         )}
       </button>
 
-      {/* Volume Controls */}
-      <div className="flex items-center gap-2">
-        <button
-          onClick={toggleMute}
-          className="p-1.5 rounded-full hover:bg-primary/20 transition-colors"
-          aria-label={isMuted ? 'Unmute' : 'Mute'}
-        >
-          <VolumeIcon className="w-5 h-5 text-muted-foreground" />
-        </button>
+      {/* Volume Icon */}
+      <button
+        onClick={toggleMute}
+        className="p-1 hover:opacity-80 transition-opacity"
+        aria-label={isMuted ? 'Unmute' : 'Mute'}
+      >
+        <VolumeIcon className="w-5 h-5 text-muted-foreground" />
+      </button>
 
-        {/* Volume Dots */}
-        <div className="flex gap-1.5 items-center">
-          {[0.33, 0.66, 1].map((level, i) => (
-            <button
-              key={level}
-              onClick={() => setVolumeLevel(level)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                volume >= level && !isMuted
-                  ? 'bg-primary shadow-[0_0_6px_hsl(var(--primary))]'
-                  : 'bg-muted-foreground/40 hover:bg-muted-foreground/60'
-              }`}
-              aria-label={`Set volume to ${Math.round(level * 100)}%`}
-            />
-          ))}
-        </div>
+      {/* Volume Dots */}
+      <div className="flex gap-1.5 items-center">
+        {[0.33, 0.66, 1].map((level) => (
+          <button
+            key={level}
+            onClick={() => setVolumeLevel(level)}
+            className={`w-2.5 h-2.5 rounded-full transition-all ${
+              volume >= level && !isMuted
+                ? 'bg-muted-foreground'
+                : 'bg-muted-foreground/30'
+            }`}
+            aria-label={`Set volume to ${Math.round(level * 100)}%`}
+          />
+        ))}
       </div>
 
       {/* PRESS PLAY Text */}
-      <span className="text-sm text-muted-foreground font-stranger tracking-wider ml-2">
+      <span className="text-sm text-muted-foreground font-medium tracking-widest">
         {isPlaying ? 'NOW PLAYING' : 'PRESS PLAY'}
       </span>
 
       {/* Register Button */}
       <a
         href="#events"
-        className="ml-4 px-6 py-2 bg-destructive/90 text-destructive-foreground font-stranger tracking-wider text-sm border border-destructive hover:bg-destructive transition-colors shadow-[0_0_15px_hsl(var(--destructive)/0.5)]"
+        className="ml-2 px-6 py-2.5 bg-destructive text-destructive-foreground font-semibold tracking-wider text-sm hover:bg-destructive/90 transition-colors rounded-sm"
       >
         REGISTER
       </a>
