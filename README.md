@@ -1,73 +1,205 @@
-# Welcome to your Lovable project
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/TailwindCSS-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind">
+</p>
 
-## Project info
+<h1 align="center">
+  ⚡ TechXpression: Techside Down ⚡
+</h1>
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+<p align="center">
+  <strong>Enter the portal to the ultimate tech experience</strong>
+  <br>
+  <em>A Stranger Things themed tech fest website built for March 15-17, 2025</em>
+</p>
 
-## How can I edit this code?
+<p align="center">
+  <a href="#-features">Features</a> •
+  <a href="#-tech-stack">Tech Stack</a> •
+  <a href="#-getting-started">Getting Started</a> •
+  <a href="#-project-structure">Structure</a> •
+  <a href="#-development">Development</a>
+</p>
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## ✨ Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 🎭 Immersive Experience
+- **Stranger Things Atmosphere** - MindFlayer particles, Vecna veins, animated vines, and character silhouettes
+- **Cinematic Intro Animation** - TV static, flickering lights, and portal effects
+- **Dynamic Audio Player** - Immersive background music with controls
 
-Changes made via Lovable will be committed automatically to this repo.
+### 📱 Modern & Responsive
+- **Mobile-First Design** - Fully optimized for all devices
+- **Lazy Loading** - Code-split sections for fast initial load
+- **Reduced Motion Support** - Respects user accessibility preferences
 
-**Use your preferred IDE**
+### 🎪 Event Sections
+| Section | Description |
+|---------|-------------|
+| **Hero** | Dynamic countdown timer with glitch effects |
+| **About** | Event details with animated reveal |
+| **Events** | Interactive event cards with registration modals |
+| **Schedule** | Three-day event timeline |
+| **Gallery** | Showcase of past events |
+| **Sponsors** | Partnership tiers display |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 💳 Registration & Payments
+- **Event Registration Modal** - Seamless registration flow
+- **UPI Payment Integration** - QR code generation for payments
+- **Form Validation** - Powered by React Hook Form + Zod
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🛠 Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Frontend
+| Technology | Purpose |
+|------------|---------|
+| **React 18** | UI Framework with Suspense & lazy loading |
+| **TypeScript** | Type-safe development |
+| **Vite** | Lightning-fast build tool |
+| **Tailwind CSS** | Utility-first styling |
+| **shadcn/ui** | Accessible component library |
+| **Framer Motion** | Smooth animations |
+| **Three.js** | 3D effects & particles |
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Libraries
+| Library | Purpose |
+|---------|---------|
+| `react-router-dom` | Client-side routing |
+| `@tanstack/react-query` | Server state management |
+| `react-hook-form` + `zod` | Form handling & validation |
+| `lucide-react` | Icon library |
+| `sonner` | Toast notifications |
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## 🚀 Getting Started
+
+### Prerequisites
+- **Node.js** 18+ ([install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+- **npm** or **bun** package manager
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/dev-harshhh19/techside-down-fest.git
+
+# Navigate to project directory
+cd techside-down-fest
+
+# Install dependencies
+npm install
+# or with bun
+bun install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be running at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Environment Setup
 
-**Use GitHub Codespaces**
+Copy the example environment file and configure your variables:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+cp .env.example .env
+```
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 📁 Project Structure
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+techside-down-fest/
+├── public/                 # Static assets
+├── src/
+│   ├── components/
+│   │   ├── sections/       # Page sections (Hero, About, Events, etc.)
+│   │   ├── ui/             # shadcn/ui components (49 components)
+│   │   ├── IntroAnimation.tsx
+│   │   ├── EventRegistrationModal.tsx
+│   │   ├── PaymentModal.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── Footer.tsx
+│   │   └── ...             # Atmosphere components (MindFlayer, VecnaVeins, etc.)
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utility functions
+│   ├── pages/
+│   │   ├── Index.tsx       # Main landing page
+│   │   └── NotFound.tsx    # 404 page
+│   ├── App.tsx             # App entry point with routing
+│   ├── main.tsx            # React DOM render
+│   └── index.css           # Global styles & Tailwind config
+├── index.html              # HTML template with SEO meta tags
+├── tailwind.config.ts      # Tailwind configuration
+├── vite.config.ts          # Vite configuration
+└── package.json
+```
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 🔧 Development
 
-## Can I connect a custom domain to my Lovable project?
+### Available Scripts
 
-Yes, you can!
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run build:dev` | Build in development mode |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Performance Features
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- **Code Splitting** - Lazy-loaded pages and sections
+- **Query Caching** - 5-minute stale time with React Query
+- **Conditional Rendering** - Atmosphere effects disabled on mobile
+- **Suspense Boundaries** - Graceful loading states
+
+### Development Monitor
+
+A built-in performance monitor (`DevPerformanceMonitor`) displays FPS and render metrics during development.
+
+---
+
+## 🎨 Theming
+
+The project uses a custom Stranger Things-inspired dark theme with:
+
+- **Primary Colors**: Neon red/crimson accents
+- **Typography**: Cinzel, Orbitron, Abril Fatface, EB Garamond fonts
+- **Effects**: Glitch text, pulsing glows, particle systems
+
+Theme variables are defined in `src/index.css` and `tailwind.config.ts`.
+
+---
+
+## 🔒 Security
+
+The application implements security headers in `index.html`:
+
+- Content Security Policy (CSP)
+- X-Content-Type-Options
+- Strict Referrer Policy
+
+---
+
+## 📄 License
+
+This project is private and proprietary.
+
+---
+
+<p align="center">
+  <strong>Built with 🔮 for TechXpression 2025</strong>
+  <br>
+  <em>"Friends don't lie, but code shouldn't either."</em>
+</p>
